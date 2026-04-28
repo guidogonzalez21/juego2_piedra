@@ -41,4 +41,5 @@ def piedra_papel_tijera():
         print(" Empate definitivo")
 
 if __name__ == "__main__":
+    
     piedra_papel_tijera()
