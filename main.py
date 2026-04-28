@@ -2,28 +2,43 @@ import random
 
 def piedra_papel_tijera():
     opciones = ["piedra", "papel", "tijera"]
-    print("¡Bienvenido a Piedra, Papel o Tijera!")
+    
+    intentos_usuario = 0
+    intentos_computadora = 0
 
-    while True:
+    print("Bienvenido a Piedra, Papel o Tijera")
+    print("Tienes 3 intentos\n")
+
+    for intento in range(1, 4):  
+        print(f"\n--- Intento {intento} ---")
+        
         usuario = input("Elige piedra, papel o tijera: ").lower()
-
-        if usuario in opciones:
-            break
+        computadora = random.choice(opciones)
+        
+        print(f"La computadora eligió: {computadora}")
+        
+        if usuario == computadora:
+            print("Empate, no suma puntos.")
+        elif (usuario == "piedra" and computadora == "tijera") or \
+            (usuario == "papel" and computadora == "piedra") or \
+            (usuario == "tijera" and computadora == "papel"):
+            print("¡Ganaste este intento!")
+            intentos_usuario += 1
         else:
-            print("❌ Debes escribir: piedra, papel o tijera")
+            print("Perdiste este intento.")
+            intentos_computadora += 1
 
-    computadora = random.choice(opciones)
 
-    print(f"La computadora eligió: {computadora}")
+    print("\n--- RESULTADOS ---")
+    print(f"Usuario ganó: {intentos_usuario} intentos")
+    print(f"Computadora ganó: {intentos_computadora} intentos")
 
-    if usuario == computadora:
-        print("¡Es un empate!")
-    elif (usuario == "piedra" and computadora == "tijera") or \
-         (usuario == "papel" and computadora == "piedra") or \
-         (usuario == "tijera" and computadora == "papel"):
-        print("¡Ganaste esta ronda!")
+    if intentos_usuario > intentos_computadora:
+        print(" Ganador definitivo: Usuario")
+    elif intentos_computadora > intentos_usuario:
+        print(" Ganador definitivo: Computadora")
     else:
-        print("¡Perdiste, gana la máquina!")
+        print(" Empate definitivo")
 
 if __name__ == "__main__":
     
